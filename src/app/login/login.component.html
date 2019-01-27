@@ -1,0 +1,48 @@
+<form  #loginForm="ngForm" novalidate autocomplete="off">
+  <div class="progress" style="--scroll:33.0789%;">
+  <h3>Welcome to Routing.All About Rouing and Form Validations....</h3>
+
+  <h4  change-text>Please enter your credentials.({{ loginDate | date:"MM/dd/yy" }})</h4><br>
+
+  Name : <br>
+ <input  type="text" name="Name" [(ngModel)]="Name" #username123="ngModel"
+  required  only-alphabets><br>
+
+  Username:<br>
+
+  <input type="text" name="Username" [(ngModel)]="Username" #username="ngModel" required >
+
+  <app-error-display [displayError]="username.invalid && username.errors.required &&
+  (username.dirty || username.touched || loginForm.submitted)"
+  errorMsg="Please enter username"></app-error-display>
+
+  <br>
+  Password:<br>
+  <input type="password" name="Password" [(ngModel)]="Password" #password="ngModel" required >
+
+   <app-error-display [displayError]="password.invalid && password.errors.required && 
+  (password.dirty || password.touched || loginForm.submitted)"
+  errorMsg="Please enter password"></app-error-display> 
+  <br>
+
+  Email:<br>
+  <input type="email" name="Email" [(ngModel)]="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel" required  >
+  <app-error-display [displayError]="email.invalid && email.errors.pattern && 
+  (email.dirty || email.touched || loginForm.submitted)"
+  errorMsg="Please enter correct Email Address"></app-error-display>
+
+
+  <br>
+  <!-- Using Router Link -->
+  <button routerLink="/dashboard">Go to dashboard</button> 
+  <button type="submit">Login</button>
+</div>
+</form>
+
+<!-- <form #loginForm="ngForm" novalidate autocomplete="off">
+
+  <error-display [displayError]="remarks.invalid && remarks.errors.required &&
+  (remarks.dirty || remarks.touched || loginForm.submitted)"
+  errorMsg="Please enter remark"></error-display>
+
+</form> -->

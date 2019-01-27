@@ -1,0 +1,44 @@
+<p>
+  Welcome to Routing!! {{stringInterpolation}}
+</p>
+
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Favorite food" value="Cut Dosa">
+  </mat-form-field>
+
+<div *ngIf="!loginMessage">
+  <img src="./assets/images/Eclipse-1s-200px.gif">
+</div>
+  <div *ngIf="loginMessage">
+    <input Type="text" placeholder="Search..." [(ngModel)]="searchFromTable">
+    <br>
+<table border="1" >
+    <thead>
+         <tr>
+             <td>ID</td>
+             <td>Name</td>
+             <td>Email</td>
+          </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let login of loginMessage | Search: searchFromTable ">
+        <td>
+          {{login.id}}
+        </td>
+        <td>
+          {{login.name}}
+        </td>
+        <td>
+          {{login.email}}
+        </td>
+      </tr>
+    </tbody>
+</table>
+</div>
+
+<br>
+<br>
+<button (click)="onSuccessfulLogin()">Click to check Status</button>
+<button (click)="onClick()">Click to reset password</button>
+
+
